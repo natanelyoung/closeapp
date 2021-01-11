@@ -1,9 +1,10 @@
 <template>
+
 <div>
-    <form @submit.prevent="login">
-     <h1> Login</h1>
-      <input v-model="login.email" type="email" placeholder="Email"/>
-      <input v-model="login.password" type="password" placeholder="Password" />
+      <form v-if="!userID" @submit.prevent="signUp">
+        <h1>SIGNUP</h1>
+      <input type="email" v-model="email" placeholder="Email"/>
+      <input type="password" v-model="password" placeholder="Password" />
       <input type="submit" value="login"/>
     </form>
 </div>
@@ -22,8 +23,8 @@ export default {
       }
     },
     methods:{
-      async login(){
-        await this.db.users().validate(this.email,this.password)
+      async signUp(){
+        this.userID = await this.db.users().create(this.email,this.password)
         this.$router.push("/")
       },
     }

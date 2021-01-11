@@ -1,7 +1,11 @@
 <template>
   <div id="app">
+    
+    <router-link class="nav-item" to="/">Home</router-link>
+    <router-link class="nav-item" to="/login">Login</router-link>
+    <router-link class="nav-item" to="/signup">Signup</router-link>
     <button @click="logout">Logout</button>
-    <router-view v-if="db" :db="db"></router-view>
+    <router-view class="nav-item" v-if="db" :db="db"></router-view>
 
   </div>
 </template>
@@ -37,5 +41,10 @@ export default {
 <style scoped>
 #app{
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.nav-item{
+  padding: 20px;
 }
 </style>
+
